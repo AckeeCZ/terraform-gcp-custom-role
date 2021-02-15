@@ -5,7 +5,6 @@
 ```hcl
 module "custom_role" {
   source  = "AckeeCZ/custom-role/gcp"
-  version = "1.0.0"
 
   project     = "${var.project}"
   role_id     = "company.entity.scope"
