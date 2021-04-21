@@ -23,3 +23,7 @@ module "developer_role" {
 output "permissions" {
   value = module.developer_role.permissions
 }
+
+output "id" {
+  value = module.developer_role.id
+}
