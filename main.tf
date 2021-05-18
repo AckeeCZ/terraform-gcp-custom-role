@@ -6,7 +6,7 @@ data "google_iam_role" "roles" {
 locals {
   # concat list of permissions with distinct permissions you want to remove -- thats cause user can have remove list like this one: ['a', 'a', ]
   # cautious! this works only because tf removes duplicates from the first duplicate item onwards
-  list_with_item_in_front = distinct(concat(distinct(var.remove_permissions), flatten(data.google_iam_role.roles.*.included_permissions)))
+  list_with_item_in_front = distinct(concat(distinct(var.remove_permissions), flatten([for perm in data.google_iam_role.roles.*.included_permissions : perm if perm != null])))
   # and remove those, which have to be removed with slice
   permissions_removed = slice(
     local.list_with_item_in_front,
