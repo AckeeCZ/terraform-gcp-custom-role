@@ -2,7 +2,7 @@ variable "project" {}
 variable "zone" {}
 
 provider "google" {
-  version = "~> 3.76.0"
+  version = "~> 4.57.0"
   project = var.project
   region  = var.zone
 }
